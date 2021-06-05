@@ -1,9 +1,15 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+
+import com.google.gson.Gson;
 
 
 
@@ -11,8 +17,12 @@ import java.util.ArrayList;
 
 public class main {
 	
-	BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+		
 	
+		
+		
+		
 	public static superheroe generarsuperheroe() throws IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Nombre:");		       			
@@ -88,8 +98,26 @@ public class main {
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
 		
+		
+		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		ArrayList<superheroe> heroes=new ArrayList<superheroe>();
+		
+		Gson gson = new Gson();
+		
+		
+		
+		try (Reader readerjson = new FileReader("heroes.json")) {
+
+	        // Convert JSON File to Java Object
+			superheroe[] supers =gson.fromJson(readerjson, superheroe[].class);
+
+			heroes.addAll(Arrays.asList(supers));
+
+	    } catch (IOException e) {
+	        
+	    }
+		
 		int opcion;
 		do {
 			System.out.println("1.-Añadir heroe");
@@ -103,13 +131,25 @@ public class main {
 				break;
 			
 			
+			
+			case 2:
+				for(superheroe h:heroes) {
+					System.out.println(h.toString());
+				}
+				break;
 			}
-	}while(opcion!=2);
+	}while(opcion!=3);
+	
+	try (FileWriter writer = new FileWriter("Heroes.json")) {
+        gson.toJson(heroes, writer);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
 		
 	String header = "<?xml version=\"1.0\" encoding=\"UTF-8\">\n";
 	String root = "<Superheroes>\n";
 	String xml = "";	
-	xml += header + root+heroes;	
+	xml += header + root;	
 	for (superheroe p: heroes) {
 		xml += heroes;
 		System.out.println(xml);
