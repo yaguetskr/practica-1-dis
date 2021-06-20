@@ -76,7 +76,12 @@ public class superheroe {
 	public String toString() {
 		return "\n\t\t<Superheroe>\n\t\t\t<Nombre>" +this.nombre +"</Nombre>\n\t\t\t<Identidad secreta>"+this.secretid+"</Identidad secreta>\n\t\t\t<Id>"+ this.id +"</Id>\n\t\t\t<Batallas>"+ this.bats+"\t\t\t</Batallas>\n\t\t\t"+ this.habs+"\n\t\t\t<Genero>"+this.genero+"</Genero>\n\t\t\t<Procedencia>"+ this.procedencia +"</Procedencia>\n\t\t</Superheroe>\n";
 	}
-
+	public String Printheroe() {
+		return "Nombre:" +this.nombre +"\nIdentidad secreta:"+this.secretid+"\nId:"+ this.id +"\nHabilidades:"+ this.habs+"\nGenero:"+this.genero+"\nProcedencia:"+ this.procedencia;
+	}
+	public String Printbatallas() {
+		return "Batallas:" +this.bats;
+	}
 	public String getId() {
 		return id;
 	}

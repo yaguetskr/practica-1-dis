@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="UTF-8">
 <Superheroes>
+[
+		<Superheroe>
+			<Nombre>Superman</Nombre>
+			<Identidad secreta>Clarke Kent</Identidad secreta>
+			<Id>1</Id>
+			<Batallas>[
+				<batalla>
+					<lugar>Moncloa</lugar>
+					<Fecha comienzo>Hace dos dias</Fecha comienzo>
+					<Fecha fin>null</Fecha fin>
+				</batalla>
+]			</Batallas>
+			
+			<Habilidades>
+				<Tipo>Superfuerza</Tipo>
+				<Definicion>Esta mas fuerte que el vinagre</Definicion>
+			</Habilidades>
 
+			<Genero>Extraterrestre</Genero>
+			<Procedencia>Krypton</Procedencia>
+		</Superheroe>
+]
 </Superheroes>

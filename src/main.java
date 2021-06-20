@@ -121,30 +121,45 @@ public class main {
 		int opcion;
 		do {
 			System.out.println("1.-Añadir heroe");
-			System.out.println("2.-Salir");
+			System.out.println("2.-Buscar heroe");
+			System.out.println("3.-Consultar batallas heroe");
+			System.out.println("4.-Salir");
 			
 			opcion = Integer.parseInt(reader.readLine());
 			
 			switch(opcion) {
 			case 1:
 				heroes.add(generarsuperheroe());
+				heroes.get(heroes.size()-1).setId(Integer.toString(heroes.size()));;
 				break;
 			
 			
 			
 			case 2:
-				for(superheroe h:heroes) {
-					System.out.println(h.toString());
+				System.out.println("Id del heroe a buscar:");
+				int id =Integer.parseInt(reader.readLine());
+				
+				try{
+					System.out.println(heroes.get(id).Printheroe());
+				}catch(Exception e){
+					System.out.println("Heroe no encontrado");
 				}
 				break;
+			case 3:
+				System.out.println("Id del heroe a buscar:");
+				int identifier =Integer.parseInt(reader.readLine());
+				
+				try{
+					System.out.println(heroes.get(identifier).Printbatallas());
+				}catch(Exception e){
+					System.out.println("Heroe no encontrado");
+				}
+				break;
+				
 			}
-	}while(opcion!=3);
+	}while(opcion!=4);
 	
-	try (FileWriter writer = new FileWriter("Heroes.json")) {
-        gson.toJson(heroes, writer);
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
+	 
 		
 	String header = "<?xml version=\"1.0\" encoding=\"UTF-8\">\n";
 	String root = "<Superheroes>\n";
@@ -157,8 +172,13 @@ public class main {
 	String close_root = "\n</Superheroes>";
 	System.out.println(xml);
 	xml += close_root;
-	writeToFile(xml, "Superheroes.xml");	
-		
+	writeToFile(xml, "Superheroes.xml");
+	
+	try (FileWriter writer = new FileWriter("heroes.json")) {
+        gson.toJson(heroes, writer);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }	
 		
 		
 		
